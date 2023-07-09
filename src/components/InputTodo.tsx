@@ -4,9 +4,14 @@ import styled from "styled-components";
 type Props = {
   inputText: string;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleClickAdd: () => void;
 };
 
-export const InputTodo = ({ inputText, handleChange }: Props) => {
+export const InputTodo = ({
+  inputText,
+  handleChange,
+  handleClickAdd,
+}: Props) => {
   return (
     <SInputTodoArea>
       <SInput
@@ -15,7 +20,7 @@ export const InputTodo = ({ inputText, handleChange }: Props) => {
         value={inputText}
         onChange={handleChange}
       />
-      <SButton>追加</SButton>
+      <SButton onClick={handleClickAdd}>追加</SButton>
     </SInputTodoArea>
   );
 };

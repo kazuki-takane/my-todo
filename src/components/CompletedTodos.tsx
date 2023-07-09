@@ -8,17 +8,36 @@ import {
   SListItem,
   STodoName,
 } from "./IncompleteTodos";
+import { TodoState } from "../App";
 
-export const CompletedTodos = () => {
+type Props = {
+  completedTodos: Array<TodoState>;
+  handleDeleteCompletedTodo: (i: number) => void;
+  handleUnChecked: (i: number) => void;
+};
+
+export const CompletedTodos = ({
+  completedTodos,
+  handleDeleteCompletedTodo,
+  handleUnChecked,
+}: Props) => {
   return (
     <SCompletedTodosArea>
       <SFieldTitle className="fieldTitle">完了したTODO</SFieldTitle>
       <SList>
-        <SListItem>
-          <SCheckbox type="checkbox" />
-          <SCompletedTodoName>OXゲームアプリ作成</SCompletedTodoName>
-          <SDeleteButton>削除</SDeleteButton>
-        </SListItem>
+        {completedTodos.map((completedTodo, i) => (
+          <SListItem key={i}>
+            <SCheckbox
+              type="checkbox"
+              checked={completedTodo.isChecked}
+              onChange={() => handleUnChecked(i)}
+            />
+            <SCompletedTodoName>{completedTodo.todo}</SCompletedTodoName>
+            <SDeleteButton onClick={() => handleDeleteCompletedTodo(i)}>
+              削除
+            </SDeleteButton>
+          </SListItem>
+        ))}
       </SList>
     </SCompletedTodosArea>
   );

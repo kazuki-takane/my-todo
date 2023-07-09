@@ -1,22 +1,34 @@
 import React from "react";
 import styled from "styled-components";
 import { SButton } from "./InputTodo";
+import { TodoState } from "../App";
 
-export const IncompleteTodos = () => {
+type Props = {
+  incompleteTodos: Array<TodoState>;
+  handleDelete: (i: number) => void;
+  handleChecked: (i: number) => void;
+};
+
+export const IncompleteTodos = ({
+  incompleteTodos,
+  handleDelete,
+  handleChecked,
+}: Props) => {
   return (
     <SIncompleteTodosArea>
       <SFieldTitle className="fieldTitle">未完了のTODO</SFieldTitle>
       <SList>
-        <SListItem>
-          <SCheckbox type="checkbox" />
-          <STodoName>TODOアプリ作成</STodoName>
-          <SDeleteButton>削除</SDeleteButton>
-        </SListItem>
-        <SListItem>
-          <SCheckbox type="checkbox" />
-          <STodoName>React公式ドキュメント</STodoName>
-          <SDeleteButton>削除</SDeleteButton>
-        </SListItem>
+        {incompleteTodos.map((incompleteTodo, i) => (
+          <SListItem key={i}>
+            <SCheckbox
+              type="checkbox"
+              checked={incompleteTodo.isChecked}
+              onChange={() => handleChecked(i)}
+            />
+            <STodoName>{incompleteTodo.todo}</STodoName>
+            <SDeleteButton onClick={() => handleDelete(i)}>削除</SDeleteButton>
+          </SListItem>
+        ))}
       </SList>
     </SIncompleteTodosArea>
   );
