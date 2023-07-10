@@ -12,6 +12,12 @@ export const InputTodo = ({
   handleChange,
   handleClickAdd,
 }: Props) => {
+  const pressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleClickAdd();
+    }
+  };
+
   return (
     <SInputTodoArea>
       <SInput
@@ -19,6 +25,7 @@ export const InputTodo = ({
         placeholder="TODOを入力"
         value={inputText}
         onChange={handleChange}
+        onKeyDown={pressEnter}
       />
       <SButton onClick={handleClickAdd}>追加</SButton>
     </SInputTodoArea>
