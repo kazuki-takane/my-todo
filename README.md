@@ -3,7 +3,7 @@ TODOタスクを管理できます。<br>
 入力したTODOは完了させたり、未完了に戻したり、削除したりできます。<br>
 データの永続化はしておりません。<br>
 
-<img src="https://github.com/kazuki-takane/my-todo/assets/119714353/2e810902-57eb-408a-b9d8-fc161e521cc1" >
+<img src="https://github.com/kazuki-takane/my-todo/assets/119714353/e9bd7923-4cb4-4ab2-a9a2-a01d048cf3de" >
 
 ## URL
 [https://kazuki-takane.github.io/my-todo/](https://kazuki-takane.github.io/my-todo/)
